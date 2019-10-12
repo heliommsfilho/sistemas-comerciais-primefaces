@@ -51,3 +51,23 @@ footer {
 	margin-top: 8px;
 	padding: 10px;
 }
+
+.rotulo {
+	width: 150px;
+}
+
+.campo {
+	
+}
+
+.ui-panelgrid td {
+	height: 34px;
+}
+
+.ajax-status {
+	position: fixed;
+	top: 55px;
+	right: 10px;
+	width: 35px;
+	heigth: 35px;
+}
