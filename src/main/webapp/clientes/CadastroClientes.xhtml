@@ -38,6 +38,31 @@
 				<p:outputLabel value="E-mail" for="email"/>
 				<p:inputText id="email" size="60" max="80"/>
 			</p:panelGrid>
+			
+			<p:commandButton value="Adicionar endereço" style="margin-top: 20px;"/>
+			
+			<p:dataTable id="tabelaEnderecos" value="#{cadastroClientesBean.listaEnderecos}" var="endereco"
+						 rows="20" paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="true" emptyMessage="Nenhum endereço encontrado.">
+				<p:column headerText="Logradouro" style="width: 60%">
+					<h:outputText value="#{endereco.rua}"/>
+				</p:column>
+				<p:column headerText="Número" style="width: 5%">
+					<h:outputText value="#{endereco.numero}"/>
+				</p:column>
+				<p:column headerText="Complemento" style="width: 10%">
+					<h:outputText value="#{endereco.complemento}"/>
+				</p:column>
+				<p:column headerText="CEP" style="width: 5%">
+					<h:outputText value="#{endereco.cep}"/>
+				</p:column>
+				<p:column headerText="Cidade" style="width: 16%">
+					<h:outputText value="#{endereco.cidade}"/>
+				</p:column>
+				<p:column style="width: 4%; text-align: center;">
+	    			<p:button icon="ui-icon-pencil" title="Editar"/>
+	    			<p:button icon="ui-icon-trash" title="Excluir"/>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>
