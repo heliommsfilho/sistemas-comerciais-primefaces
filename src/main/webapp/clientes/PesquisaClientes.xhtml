@@ -1,0 +1,50 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+    			xmlns="http://www.w3.org/1999/xhtml"
+    			xmlns:h="http://java.sun.com/jsf/html"
+    			xmlns:f="http://java.sun.com/jsf/core"
+    			xmlns:ui="http://java.sun.com/jsf/facelets"
+    			xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="titulo">Pesquisa de clientes</ui:define>
+    
+    <ui:define name="corpo">
+    	<h:form>
+    		<h1>Pesquisa de clientes</h1>
+    		
+    		<p:toolbar style="margin-top: 20px;">
+    			<p:toolbarGroup>
+    				<p:commandButton value="Pesquisar"/>
+    			</p:toolbarGroup>
+    			<p:toolbarGroup align="right">
+    				<p:button value="Novo" outcome="/clientes/CadastroClientes"/>
+    			</p:toolbarGroup>
+    		</p:toolbar>
+    		
+    		<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px;" columnClasses="rotulo, campo">
+    			<p:outputLabel value="CPF/CNPJ" for="cpfOuCnpj"/>
+    			<p:inputText id="cpfOuCnpj" size="14"/>
+    			
+    			<p:outputLabel value="Nome" for="nome"/>
+    			<p:inputText id="nome" size="60"/>
+    		</p:panelGrid>
+    		
+    		<p:dataTable id="clientesTable" value="#{pesquisaClientesBean.clientesFiltrados}" var="cliente"
+    					 style="margin-top: 20px;" emptyMessage="Nenhum cliente encontrado."
+    					 rows="20" paginator="true" paginatorPosition="bottom" paginatorAlwaysVisible="true">
+    			<p:column headerText="Nome" style="width: 80%; text-align: left;">
+    				<h:outputText value="#{cliente.nome}"/>
+    			</p:column>
+    			<p:column headerText="Tipo" style="width: 8%; text-align: left;">
+    				<h:outputText value="#{cliente.tipo}"/>
+    			</p:column>
+    			<p:column headerText="CPF/CNPJ" style="width: 8%; text-align: left;">
+    				<h:outputText value="#{cliente.cpfOuCnpj}"/>
+    			</p:column>
+	    		<p:column style="width: 4%">
+	    			<p:button icon="ui-icon-pencil" title="Editar"/>
+	    			<p:button icon="ui-icon-trash" title="Excluir"/>
+	    		</p:column>
+    		</p:dataTable>
+    	</h:form>
+    </ui:define>
+</ui:composition>
