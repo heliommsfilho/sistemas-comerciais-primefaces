@@ -32,6 +32,27 @@
 				<p:outputLabel value="Senha" for="senha"/>
 				<p:password id="senha" size="32" max="32"/>
 			</p:panelGrid>
+			
+			<p:panelGrid columns="2" id="panelAdicionarGrupo" style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
+				<p:selectOneMenu value="${'ADM'}">
+					<f:selectItem itemLabel="Administradores" itemValue="ADM"/>
+					<f:selectItem itemLabel="Auxiliares" itemValue="AUX"/>
+					<f:selectItem itemLabel="Vendedores" itemValue="VEN"/>
+				</p:selectOneMenu>
+				
+				<p:commandButton value="Adicionar grupo"/>
+			</p:panelGrid>
+			
+			<p:dataTable id="tabelaGrupos" value="#{cadastroUsuarios.listaGrupos}" var="grupo" emptyMessage="Nenhum grupo encontrado."
+						 rows="20" paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom">
+				<p:column headerText="Grupo" style="width: 96%; text-align: left">
+					<h:outputText value="#{grupo}"/>
+				</p:column>
+				<p:column style="width: 4%">
+					<p:button icon="ui-icon-pencil" title="Editar"/>
+					<p:button icon="ui-icon-trash" title="Excluir"/>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>
